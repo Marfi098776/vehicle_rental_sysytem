@@ -1,3 +1,8 @@
+create type user_role as enum('Admin','Customer');
+create type vehicle_type as enum('car','bike','truck');
+create type a_status as enum('available','rented','maintenance');
+create type b_status as enum('pending','confirmed','completed','cancelled');
+
 create table users (
   user_id int primary key,
   name varchar(50),
@@ -6,7 +11,6 @@ create table users (
   phone varchar(100),
   role user_role
 );
-create type user_role as enum('Admin','Customer')
 
 create table vehicles (
   vehicle_id int primary key,
@@ -17,8 +21,6 @@ create table vehicles (
   rental_price_per_day decimal(10,2),
   availability_status a_status
 );
-create type vehicle_type as enum('car','bike','truck')
-create type a_status as enum('available','rented','maintenance')
 
 create table bookings (
   booking_id int primary key,
@@ -29,7 +31,7 @@ create table bookings (
   status b_status,
   total_cost decimal(10,2)
 );
-create type b_status as enum('pending','confirmed','completed','cancelled')
+
 
 insert into users (
     user_id, 
